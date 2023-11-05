@@ -19,5 +19,5 @@ gcloud compute ssh --zone "us-central1-c" "vm-bastion-us-central1" --project "fr
 
 
 #Create SSH Key : https://cloud.google.com/compute/docs/connect/create-ssh-keys#linux-and-macos
-ssh-keygen -t rsa -f ~/.ssh/KEY_FILENAME -C USERNAME -b 2048
-#
+# Add SSH key to VM : https://cloud.google.com/compute/docs/connect/add-ssh-keys
+# Connect to VM : https://cloud.google.com/compute/docs/connect/standard-ssh#putty-app
