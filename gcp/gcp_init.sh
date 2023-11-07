@@ -12,7 +12,7 @@ gcloud init # will initialize the configuration of gcloud
 gcloud init --skip-diagnostics # skip diagnostics next time
 gcloud --help #see cloud platform services you can interact with
 gcloud topic --help #learn about advanced features
-gcloud cheat sheet #see a roster of go-to glcloud commands
+gcloud cheat-sheet #see a roster of go-to glcloud commands
 
 
 gcloud compute ssh --zone "us-central1-c" "vm-bastion-us-central1" --project "friendly-magpie-403914"
