@@ -1,4 +1,5 @@
 #!/bin/bash
 
-#This is to pratcice AWs Cli
-echo "Hellow World"
+#This is to pratcie AWS Cli
+#root account aws_admin https://179666141320.signin.aws.amazon.com/console
+
