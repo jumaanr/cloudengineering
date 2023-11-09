@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# bastion : gcpstation01
+# username : aws_jumaanr
+
+
 #CLI Installation on linux : https://cloud.google.com/sdk/docs/install-sdk
 curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-453.0.0-linux-x86_64.tar.gz
 tar -xf google-cloud-cli-453.0.0-linux-x86_64.tar.gz
@@ -15,7 +19,8 @@ gcloud topic --help #learn about advanced features
 gcloud cheat-sheet #see a roster of go-to glcloud commands
 
 
-gcloud compute ssh --zone "us-central1-c" "vm-bastion-us-central1" --project "friendly-magpie-403914"
+gcloud compute ssh --zone "us-west4-b" "gcpstation01" --project "friendly-magpie-403914"
+
 
 
 #Create SSH Key : https://cloud.google.com/compute/docs/connect/create-ssh-keys#linux-and-macos
