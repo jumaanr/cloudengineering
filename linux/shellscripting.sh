@@ -127,10 +127,167 @@ then
 fi
 
 #-------------------------------------------For Loop --------------------------------------------------------------------------
+#Syntax
+for item in list_of_items
+do
+    task item
+done
 
-#Executing a Shell Script
+list_of_items = lunar-mission jupiter-mission saturn-mission satellite-mission # this can be list of names seperated by space
 
-# Arithmetic Operations
+for mission in lunar-mission jupiter-mission saturn-mission satellite-mission
+do
+    create-and-launch-rocket $mission
+done
+
+# Now in this case we type all the mission names in the for loop, for that we store all the missions in a file called mission-names.txt
+for mission in `cat mission-names.txt`
+do
+    create-and-launch-rocket $mission
+done
+
+# Above can be written as below
+for mission in $(cat mission-names.txt)
+do
+    create-and-launch-rocket $mission
+done
+
+# In following the mission-1 , mission-2 and goes through the iteration
+for misson in 1 2 3 4 5 6 
+do
+    create-launch-rocket mission-$mission
+done
+
+# Iterate through certain number of iterations
+for misson in {0..100}
+do
+    create-launch-rocket mission-$mission
+done
+# Other adaptations also possible , similar to C
+for (( mission = 0 ; mission <= 100; mission++))
+do
+    create-launch-rocket mission-$mission
+done
+# -- Some practical usages
+# counts the number of lines each file where the script runs
+for file in $(ls)
+do
+    echo Line count of $file is $(cat $file | wc -l)
+done
+
+# install packages listed in a list
+for packages in $(cat install-packages.txt)
+do
+    sudo apt-get -y install $package
+done
+
+# check the server uptimes in a list of servers
+for packages in $(cat servers.txt)
+do
+    ssh $server uptime
+done
+
+#-------------------------------------------While Loop--------------------------------------------------------------------------#
+# Helps to iterate until a condition satisfied : True
+# Use while loop when you are not sure about number of iterations , this creates infinite loops and helps for menu driven programs
+while [ condition ]
+do
+    task
+done
+
+# infinite loop example
+while true
+do
+    task
+    break # break statement in for loop or while loops breaks / terminates the loop and exit out of it. Useful for infinite loop
+    continue # this keeps running the loop , especially requires when non of the conditionals met inside a loop or unexpected input given
+done
+
+# Example : Computer Shutdown program
+while true
+do
+    echo " 1 - Shutdown "
+    echo " 2 - Restart "
+    echo " 3 - Exit Menu"
+    read -p "Enter your choice: " choice
+    
+    if [ $choice -eq 1 ]
+    then
+        shutdown now
+    elif [ $choice -eq 2 ]
+    then
+        shutdown -r now
+    elif [ $choice -eq 3 ]
+    then
+        break # breaks the loop
+    else
+        continue # continues the loop
+    fi
+done
+
+#-------------------------------------------Case Statement--------------------------------------------------------------------------#
+# the value mentioned in paranthesis ) will execute based upon case's value . This is similar to switch statement in C
+while true
+do
+    echo "1. Shutdown"
+    echo "2. Restart"
+    echo "3. Exit Menu"
+
+    read -p "Enter your choice: " choice
+    case $choice in
+        1) shutdown now ;;  # double colon is mandatory
+        2) shutdown -r now ;;
+        3) break ;;
+        *) continue ;; # * denotes any other value
+    esac
+done
+
+
+#---------------------------------------- Shebang -----------------------------------------------------------------------------------#
+ls -l /bin/sh  # check to what shell the bourne shell is referring to
+echo $SHELL #check the current shell
+# Note : When you share your script with other , you must specifically instruct to run it on bash shell, not any other shell
+# shebang is used to specify what shell a shell script must run int , following instruct to run in bash shell
+#!/bin/bash
+# always start with shebang at the top of your script
+
+#---------------------------------------- Exit Codes --------------------------------------------------------------------------------#
+# If you run a command does not exists it returns an error, each command returns an exit code (return code)
+# SUCCESS EXIT STATUS=0 , FAILURE: EXIT STATUS>0
+# The exit code saved in a special variable called $?, to check the exit code
+# most of the cases if command not found , the exit code is 127
+echo $?
+# good practice is to use exit code in script to indicate the caller
+# Default exit code is 0
+
+
+#---------------------------------------- Functions ---------------------------------------------------------------------------------#
+# function does a specific task only
+#syntax: Defining a function
+
+function launch-rocket() {
+    $mission_name=$1
+    #define code here
+
+    return 1 # similar to exit, but will only exit the function. Normal exit will exit the script. Only returns numbers
+}
+
+#syntax : Calling a function
+launch-rocket lunar-mission  #mission_name has been called as a function parameter , where it pick input from cmdline argument 1
+
+#oder of the function is important, because shell scripts read line by line , therefore function must always be defined before calling the function.
+
+#-- Returning values
+# the return only used to return exit codes , not values. Therefore return it using echo instead .
+#!/bin/bash
+  
+function add(){
+  echo $(( $1 + $2 )) #returns the value via echo statement
+}
+
+result=$(add 3 5)
+echo "The result is $result"
+
 
 # Best Practices/IDEs
 
