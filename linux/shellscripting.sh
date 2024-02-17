@@ -287,7 +287,16 @@ function add(){
 
 result=$(add 3 5)
 echo "The result is $result"
+ 
+
+#-------------------------------Best Practices/IDEs-----------------------
+# Install shellcheck
+apt-get install shellcheck # for dpkg 
+yum install shellcheck # for rpm packages
+#usage
+shellcheck myscript.sh
+
+# Ref : https://google.github.io/styleguide/shellguide.html   This provides recommendation and best practices. 
 
 
-# Best Practices/IDEs
-
+#----------------------------- End of Shell Scripting ----------------------#
