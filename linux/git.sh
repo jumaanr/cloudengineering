@@ -7,6 +7,9 @@ sudo apt update
 sudo apt install git -y
 git --version
 
+# Installation on RPM based
+$ sudo dnf install git-all or $sudo yum install git-all
+
 #Getting help
 git help #Get the help and command palatte
 git show #show various types of objects
