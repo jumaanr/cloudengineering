@@ -10,7 +10,10 @@ git --version
 #Getting help
 git help #Get the help and command palatte
 git show #show various types of objects
+
 git help <command> #view additional help on each command
+# for this you must install the git man pages using following
+sudo apt-get install git-man
 
 #Git start-up
 git init #Init a Git Repository, this will create the directory structure .git hidden directory
