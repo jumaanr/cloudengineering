@@ -153,6 +153,9 @@ git pull origin master # We can fetch and merge remote changes directly into our
 #Question ? Whats the difference between pull (fetch + merge ) and rebasing ?
 # Pull request is updating changes from remote repository to your master branch.  However,  rebase help to update your current branch with the master branch
 
+#! Rebasing : Taking master branch and put your self on top of it , so rebase command issues from your branch 
+#! Merge : Merge happening, by checking out to master branch and apply changes of your branch into it
+
 git rebase master  #rebase your branch on top of master branch , you can specify the branch name
 git rebase -i HEAD~4 # telling Git that we want to interactively rebase last 4 commits. We can use squash option to consolidate last 4 commits to a single commit and rebase.
 
@@ -161,16 +164,24 @@ git cherry-pick b1fbc37 #* Cherry pick a certain commit and add it your working 
 #?------------------------------------------Resetting and Reverting------------------------------------------------------------#
 
 # What is resetting and revertting ? How its different from restoring ?
+# Git Revert : Git revert is used to undo changes from a specific commit by creating a new commit that applies the inverse of the changes. Unlike resetting, it doesn't alter the existing commit history.
+# Git Reset : Git reset is used to undo changes in the local working directory and staging area (index). It can also alter the commit history in a branch.
 
 git revert 8ad5d #reverse all changes made on a specific commit, useful for undoing changes ; can go back 
-git reset --soft HEAD~1 # revert the previous 1 commit back ( denoted by number ) while keeping all the changes were made ; Can go back
+git revert HEAD~0 # revert the current/latest commit to previoys commit
+
+# Git Reset : SOFT - keep changes made
+git reset --soft HEAD~1 # revert the previous 1 commit back ( denoted by number ) while keeping all the changes were made ; Can go back ; Specific commit will be removed from GitHistory
 git status #we still have access to the changes were made by resetted commit
-git reset --hard HEAD~1 #the n number of commits (n=1) will be resetted without keeping changes made, you will lose the changes made ; no go back 
+git reset --hard HEAD~1 #Reset last 1 commit. the n number of commits (n=1) will be resetted without keeping changes made, you will lose the changes made ; no go back 
 git status # we cannot see the changes made in previous commit
 
 #?--------------------------------------------Stashing-------------------------------------------------------------------------#
 
-# What is stashing in Git ? 
+# What is stashing in Git ? Git stashing is a feature in Git that allows you to temporarily shelve (or stash) changes you've made to your working directory so you can work on a different task. 
+# Stash all changes in working area using Git stash command. 
+
+# Changes are in staging area and tracked files. 
 
 git stash #stash ( save ) all the changes in working area without commit. The modifications in working area get added to stash ( a pile) ?
 git stash pop #get the changes back into the working area
@@ -181,7 +192,7 @@ git stash pop stash@{1} #pop a specific stash instead of the last one
 
 #?---------------------------------------------Reflog---------------------------------------------------------------------------#
 
-# What is Reflogging in Git ?
+# What is Reflogging in Git ? Its a log that helps you to recover your Git repository incase of deletion or disaster recovery. 
 
 git reflog #shows all the actions that have been taken on the repo
 #How to recover using reflog : Refer the reflog and perform a hard reset to the point where you want to restore
@@ -202,7 +213,7 @@ git tag v1.0  #shows the version already exists
 #?-----------------------------------------Miscellaneous-------------------------------------------------------------------------#
 git show 
 
-
+#!--- End of the Note --#
 
 
 
