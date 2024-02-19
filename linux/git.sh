@@ -20,7 +20,7 @@ git help <command> #view additional help on each command
 sudo apt-get install git-man
 
 #?------------------------------------------Git start-up------------------------------------------------------#
-git init #Init a Git Repository, this will create the directory structure .git hidden directory
+git init #!Init a Git Repository, this will create the directory structure .git hidden directory
 git status #Check the branches , Commits and Untracked files
 git add myFile.json #Stage a file for commit ready
 git commit -m "Added first story" #commit all staged files with a useful comment
@@ -66,6 +66,8 @@ git log --name-only #get the list of changed files and their authors/modifires
 git log -n <number>  #get -n number of the latest (reverse chrono order) record of commit history , to get the latest value is '1'
 git log --graph --decorate #to see previous commit history along with the branch they were committed on
 git log --all # show all of the commits
+
+git log origin/master # usually we check the log of local master branch, to check the log of remote repository using the origin(alias) and branch (master)
 
 #Going back to previous version/commit
 git checkout <commit_number> #commit number can get when you issue git log and see the number infront of each commit, this is a unique number
@@ -119,18 +121,22 @@ git push -u origin main  #This pushes changes only with the main branch
 git fetch origin master #Update orgin/master branch in our local repository
 git merge orgin/master #now we have an updated local master
 git branch -a # view all the branches both local and remote
-#! Combined command 
+# Combined command 
 git pull origin master # We can fetch and merge remote changes directly into our local master branch. No need to perform fetch and merge seperately. 
 
 #? ------------------------------------------- Git Merge Conflicts ----------------------------------------------------------#
 #* When few people work on same file , during the merge , merge conflicts can occur
 #* Git add extra charachters to the files that are conflicting
 #* Edit and remove the content that does not need to kept
-#* Add the files to Git again
-#* Now the later branch can be merged with master branch without any issues
+#* Add the files to Git again and commit 
+#* Now the later branch can be merged with master branch without any issues / you can push
 #* Finally master branch contains the combination of everyone's work 
 
 #?---------------------------------------------Forking---------------------------------------------------------------------#
+# Forking means when it comes to remote repositories and open source projects ;  you are creating an exect copy of a project and work on independently or your own team. Then once you think you are good to contribute, then you make a pull request.
+# Either you contribute or not its your decision. You can do your own experiments with it. 
+# cloning applies for both local and remote repositories and when you are directly contributing the original project 
+
 # step 1 : create a fork by clicking 'Fork' button - now under explore you can see a seperate copy 
 # step 2 : clone the forked repository directly to your system
 # step 3 : make changes (add , commit ) and push the changes to master branch of forked repository
@@ -139,15 +145,18 @@ git pull origin master # We can fetch and merge remote changes directly into our
 
 #?---------------------------------------------Rebasing----------------------------------------------------------------------#
 
-# What is Git Rebasing ?
+# What is Git Rebasing ?  Changes from one branch brought on top of another branch. As a result this would re-write the Git History. I change my base. 
+
+# Why we do it ? To update a branch with the latest changes from another branch or clean-up commit history before merging. Ensure Im caught up with all changes happening. 
 
 #have not sent a pull request, but wanted to keep yourself caught up with updates 
 #Question ? Whats the difference between pull (fetch + merge ) and rebasing ?
-# Pull request is updating changes from remote repository to your master branch, then rebase help to update your current branch with the master branch
+# Pull request is updating changes from remote repository to your master branch.  However,  rebase help to update your current branch with the master branch
 
-git rebase master  #rebase your branch on top of master branch
-git rebase -i HEAD~4 # telling Git that we want to interactively rebase last 4 commits
-git cherry-pick b1fbc37 #Cherry pick a certain commit and add it your working branch , hash of the commit is given
+git rebase master  #rebase your branch on top of master branch , you can specify the branch name
+git rebase -i HEAD~4 # telling Git that we want to interactively rebase last 4 commits. We can use squash option to consolidate last 4 commits to a single commit and rebase.
+
+git cherry-pick b1fbc37 #* Cherry pick a certain commit and add it your working branch , hash of the commit is given
 
 #?------------------------------------------Resetting and Reverting------------------------------------------------------------#
 
