@@ -25,4 +25,17 @@ resource "local_file" "newpet" {
   content = var.content
   
 }
+# rb05 : using attribute : Making output of one resource to another
+resource "local_file" "pet" {
+  filename = "/home/cloudadmin/mypets.txt"
+  content = "My favourite pet is Mr.Cat"
+  file_permission = "0700"
 
+  depends_on = [ random_pet.my-newpet ]
+
+}
+resource "random_pet" "my-newpet" {
+  prefix = "Mrs"
+  separator = "."
+  length = "2"  
+}

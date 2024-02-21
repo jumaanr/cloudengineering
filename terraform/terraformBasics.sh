@@ -187,3 +187,66 @@ variable kitty {
     default = ["cat",7,true]
 }
 # valriable calling can be done as same as lists
+
+#? ----------------------------- Ways of using variables in Terraform -------------------------------#
+There are many ways you can use variables in Terraform
+1. Using a variable.tf and passing default values
+2. Passing as commandline flags
+    $ terraform apply -var "filename=/root/pets.txt" -var "content=We love pets"
+3. As Environment variables
+    $export TF_VAR_filename="root/pets.txt"
+    $export TF_VAR_content="content=We love pets"
+    terraform apply
+4. Variable definition files 
+    create a file with extension terraform.tfvars or terraform.tfvars.json , then define variables
+    filename="root/pets.txt"
+    content="content=We love pets"
+    terraform.apply
+5. Automatically loading variable files
+    create file with exntension *.auto.tfvars or *.auto.tfvars.json
+    Use the same convention above , this will automatically load the variables to terraform
+    terraform.apply
+6. Any other file names with .tfvars extension should use :
+    terraform apply -var-file variables.tfvars
+
+# Variable definition procedence , suppose if a certain variable has been assigned values from different forms above. 
+# Terraform will load in following procedance
+1. Environment Variables
+2. terraform.tfvars
+3. *auto.tfvars (alphabatical order)
+4. -var or -var-file (commandline flags) # this has the highest priority and will override all above values
+
+#? --------------------- Resource Attributes ---------------------------
+# Link two resources together using resource attributes
+# Consider resource dependancy with each other , we are taking output of one resource and give that input to another resource.
+# refer the attribute documentation for outputs : 
+# refer rb05 resource in main.tf
+
+resource "local_file" "pet" {
+  filename = "/home/cloudadmin/mypets.txt"
+  content = "My favourite pet is ${random_pet.my-newpet.id}"
+  file_permission = "0700"
+}
+resource "random_pet" "my-newpet" {
+  prefix = "Mrs"
+  separator = "."
+  length = "2"  
+}
+
+# Implicit Dependancy - Terraform knows the dependancy as above example, the resource random_pet , my_newpet will create always befpre local_file
+# Explicit Dependancy - Explicitly define that one resource is dependant on other, useful when certain resource depends on another indirectly
+
+resource "local_file" "pet" {
+  filename = "/home/cloudadmin/mypets.txt"
+  content = "My favourite pet is Mr.Cat"
+  file_permission = "0700"
+
+  depends_on = [ random_pet.my-newpet ]
+
+}
+resource "random_pet" "my-newpet" {
+  prefix = "Mrs"
+  separator = "."
+  length = "2"  
+}
+
