@@ -25,3 +25,4 @@ resource "local_file" "newpet" {
   content = var.content
   
 }
+
