@@ -11,9 +11,17 @@ resource "local_sensitive_file" "games" {
   
 }
 
-# creating resources using multiple providers
+# rb03: creating resources using multiple providers
 resource "random_pet" "my-pet" {
   prefix = "Mrs"
   separator = "."
   length = "2"  
+}
+
+# rb04: Using input variables defined in variables.tf file
+resource "local_file" "newpet" {
+
+  filename = var.filename
+  content = var.content
+  
 }

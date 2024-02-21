@@ -49,4 +49,10 @@ variables.tf # contains variable declaration
 outputs.tf # contains outputs from resources
 provider.tf # contains provider definitions
 
-# Multiple providers and resources in Terraform
+# Multiple providers and resources in Terraform - Refer the main.tf rb03
+
+#?------------------------- Using Input Variables ---------------------------------------------------------#
+
+# 1) define a variables.tf file 
+# 2) create variables there
+# 3) call variables in resource blocks : refer rb04 in main.tf , You do not have to enclose values in double quotes when calling variables
