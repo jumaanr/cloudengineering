@@ -41,3 +41,12 @@ terraform apply
 #-- Destroy--#
 terraform destroy # destroy terraform resources, shows the execution plan as well. 
 
+#?--------------------------- Terraform Providers ---------------------------------------------------------#
+# Proper file naming conventions
+
+main.tf # main configuration file containing resource definitions
+variables.tf # contains variable declaration
+outputs.tf # contains outputs from resources
+provider.tf # contains provider definitions
+
+# Multiple providers and resources in Terraform
