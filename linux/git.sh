@@ -211,7 +211,8 @@ git tag #check all the tags placed in current branch
 git tag v1.0  #shows the version already exists
 
 #?-----------------------------------------Miscellaneous-------------------------------------------------------------------------#
-git show 
+git show
+git diff myfile # if there are changes , shows what has changed
 
 #!--- End of the Note --#
 
