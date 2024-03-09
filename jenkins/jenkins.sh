@@ -53,6 +53,8 @@ firewall-cmd $PERM --add-service=jenkins
 firewall-cmd --zone=public --add-service=http --permanent
 firewall-cmd --reload
 
+
+
 #admin,Adm!n321 : https://8090-port-4e653ce0415e49fa.labs.kodekloud.com/  mike , M!k3@123
 
 #? --- Jenkings CLI --- #
@@ -62,6 +64,22 @@ firewall-cmd --reload
 curl -Lv http://localhost:8085/login 2>&1 | grep -i 'x-ssh-endpoint' #shows the port jenkins used
 ssh -i /home/mike/.ssh/jenkins_key -l mike -p 8022 jenkins-server help
 
+# some examples using Jenkins CLI
+java -jar jenkins-cli.jar -s http://localhost:8085 -auth 'admin:Adm!n321'
+# list all the installed plugins
+list-plugins
+# install plugin from file, URL, update center
+install-plugin
+#CLI options can we use to uninstall a Jenkins plugin
+#disable a Jenkins plugin/ same as uninstall
+disable-plugin
+
+java -jar jenkins-cli.jar -s http://localhost:8085 -auth 'admin:Adm!n321' install-plugin cloudbees-bitbucket-branch-source:877.vb_b_d5243f6794
+java -jar jenkins-cli.jar -s http://localhost:8085 -auth 'admin:Adm!n321' list-plugins
+
+#update 
+java -jar jenkins-cli.jar -s http://localhost:8085 -auth 'admin:Adm!n321' disable-plugin github -restart -r
+
 # api token also can be created and provided to access cli
 
 #? ---- Jenkins Plugins --- #
@@ -69,4 +87,10 @@ ssh -i /home/mike/.ssh/jenkins_key -l mike -p 8022 jenkins-server help
 # Can get information about plugins : https://plugins.jenkins.io/
 # locally plugins can be installed from here : http://172.210.115.13:8080/manage/pluginManager/
 # If a certain plugin requires reboot
-sudo systemctl restart jenkins
+sudo systemctl restart jenkins 
+# or
+service jenkins restart
+
+# if this Jenkins deployment is a docker container
+docker restart ContainerID
+
