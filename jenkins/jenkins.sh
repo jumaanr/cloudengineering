@@ -64,4 +64,9 @@ ssh -i /home/mike/.ssh/jenkins_key -l mike -p 8022 jenkins-server help
 
 # api token also can be created and provided to access cli
 
-#?
+#? ---- Jenkins Plugins --- #
+# Jenkins plugins allow you to connect from one service to another in Jenkins
+# Can get information about plugins : https://plugins.jenkins.io/
+# locally plugins can be installed from here : http://172.210.115.13:8080/manage/pluginManager/
+# If a certain plugin requires reboot
+sudo systemctl restart jenkins
