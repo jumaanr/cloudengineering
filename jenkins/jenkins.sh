@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # ---- Go Application ---- #
+
+#project : https://github.com/kodekloudhub/go-webapp-sample?tab=readme-ov-file
 sudo docker run -it -p 8080:8000 --name go-webapp-sample -v /home/azureuser/go-webapp-sample:/go/go-webapp-sample golang
 go run main.go
 http://40.121.246.11:8080/#/home
@@ -86,11 +88,14 @@ java -jar jenkins-cli.jar -s http://localhost:8085 -auth 'admin:Adm!n321' disabl
 # Jenkins plugins allow you to connect from one service to another in Jenkins
 # Can get information about plugins : https://plugins.jenkins.io/
 # locally plugins can be installed from here : http://172.210.115.13:8080/manage/pluginManager/
-# If a certain plugin requires reboot
+#--- If a certain plugin requires a Jenkis reboot
 sudo systemctl restart jenkins 
 # or
 service jenkins restart
 
 # if this Jenkins deployment is a docker container
 docker restart ContainerID
+
+# plugin allows to perform RBAC
+# plugin allows to perform Project Based Matrix Access
 
