@@ -1,5 +1,4 @@
-```markdown
-# Git Documentation
+## Git Documentation
 Documentation: [https://git-scm.com/docs/](https://git-scm.com/docs/)
 
 ## Installation
