@@ -40,7 +40,7 @@ git add *.txt #pattern base staging , where you add the txt files only
 
 #?----------------------------------------Restore Recover and Remove--------------------------------------------#
 
-#! How to restore my files to a certain commit ?
+# Use case : I want to restore my file which was in the state of a previous commit. How do I do it ?
 
 # In Older versions :
 git checkout abc1234 -- myprogram.py # abcd.. is the commit hash, -- informs the following is a file name
@@ -49,8 +49,9 @@ git restore --source=abc1234 myprogram.py # --source is the commit has you are i
 
 
 #Even if you commit or staged a file a copy will be saved, so you can restore the file
-git restore myFile.json
-git restore --staged myFile.json #remove a file from staging area
+git restore myFile.json # Discard the changes you have made in the working directory and restore it to the previous commit
+
+git restore --staged myFile.json #remove a file from staging area ( Restore a file to the working directory from stagin area)
 git rm notes.txt -f/--cached  #remove a tracked file from git tracking (may be file is stagin area or not), --cached option will retain the file in directory, -f option will delete file permanently.
 # Still we can see the file untracked state , to ignore this file permanently add that file name to a file called .gitignore
 echo "myFile.json" >> .gitignore
