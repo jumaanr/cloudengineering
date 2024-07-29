@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<project name="Ant" default="main" basedir=".">
+    <!-- Compiles the java code (including the usage of library for JUnit -->
+    <target name="compile">
+        <javac srcdir="/opt/ant/src" destdir="/opt/ant/build">
+        </javac>
+    </target>
+    <!-- Creates Javadoc -->
+    <target name="docs" depends="compile">
+        <javadoc packagenames="src" sourcepath="/opt/ant/src" destdir="/opt/ant/docs">
+            <!-- Define which files / directory should get included, we include all -->
+            <fileset dir="/opt/ant/src">
+                <include name="**" />
+            </fileset>
+        </javadoc>
+    </target>
+    <!--Creates the deployable jar file  -->
+    <target name="jar" depends="compile">
+        <jar basedir="/opt/ant/build" destfile="/opt/ant/dist/MyClass.jar" >
+            <manifest>
+                <attribute name="Main-Class" value="MyClass" />
+            </manifest>
+        </jar>
+    </target>
+    <target name="run" depends="jar">
+      <java jar="/opt/ant/dist/MyClass.jar" fork="true" />
+    </target>
+    <target name="main" depends="compile, jar, docs, run">
+        <description>Main target</description>
+    </target>
+</project>
