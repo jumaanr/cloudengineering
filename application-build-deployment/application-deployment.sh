@@ -54,4 +54,39 @@ java -cp /opt/maven/my-app/target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
 
 #--------- NodeJS Application Packaging and Deployment --------#
 
+sudo yum install nodejs # Install nodejs
+
+## Running a nodejs application
+node -v # check version
+node MyApp.js
+
+## NPM  - NodeJS Package Manager ( This is not a build tool )
+
+npm -v #Check the npm version. Remember this could be different from the nodejs version
+npm search package_name #Search for a package
+npm install package_name #Once you identified the package , install it using this command
+#When you install a package , it will stored in ./node_modules/package_name/  {Inside the present working directory }
+#The code is located inside the ./node_modules/package_name/lib directory
+
+./package.json #list down the dependancies and metadata of application
+/node_modules/package_name/package.json #list down the dependancies of package/modules
+./node_modules/package_name/lib # application code of the package is located here
+
+# Please look at the nodejs directory in this project. The newproj_package.json shows an example package.json file created for new project. Other package.json is the npm file modules package.json file.
+
+#How to import a package and call functions of it
+# app.js
+var file = require("file");
+file.mkdirs("/tmp/dir1")
+
+#Check the list of paths NodeJs looks at when importing packages
+node -e "console.log(module.paths)"
+
+npm install package_name -g  #Install a module to be available globally
+
+ls /usr/lib/node_modules/npm/node_modules #Place where Built-In modules located
+ls /usr/lib/node_modules/ #Place where external modules located (globally)
+
+#Checkout how a NodeJs app is written into a Dockerfile 
+
 #--------- Python Application Packaging and Deployment ----------#
