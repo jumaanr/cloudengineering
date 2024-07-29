@@ -90,3 +90,63 @@ ls /usr/lib/node_modules/ #Place where external modules located (globally)
 #Checkout how a NodeJs app is written into a Dockerfile 
 
 #--------- Python Application Packaging and Deployment ----------#
+
+## Install Python versions
+sudo apt install python3.8 # in Debian/Ubuntu
+yum install python38 # Install Python 3.8 version on CentOS/RHEL
+
+yum install python2 # Install Python2 version on CentOS/RHEL
+
+python2 -V # check version of Python2
+python3 -V # check version of Python3
+python -V # check installed Python version, whatever installed first will give answer
+
+## Running Python Application
+python2 myapp.py # Version 2
+python3 myapp.py # Version 3 # check the main.py
+
+## Install packages using PIP
+
+pip2 -V # check the python2 version of pip2 
+pip3 -V # check the pip3 version that comes with python3
+pip -V # check the current pip version, whatever installed first will give answer
+# When you install Python, it installed PIP automatically.
+
+pip install package_name #install a package using pip
+pip install package_1 package_2 # install multiple packages
+pip install -r requirements.txt # install list of pacakges (bulk installation) mentioned in requirements file. 
+# Check the requirements.txt file, if you havent specified the version , pip will install the latest version
+
+## Check package information using PIP
+
+pip show package_name #give information about installed package, such as version, name and location and more details
+pip list # list down the installed packages
+
+# flask - popular web framework for python, that helps to develop web applications
+
+
+## Locations that PIP installs packages
+
+# Python packages are installde in this location : /usr/libZ/pythonX.Y/site-packages/package-name  ( X=2,3 : Y=minor version : Z=64 for 64bit packages , none)
+python2 -c "import sys; print(sys.path)" # Check the path where python looks  to find the packages
+
+# By printing sys.path you can see what locations python looks when importing a package
+# This is a command that is useful to identify cause of any package related issue
+# If its not able to find, you may be have installed to the wrong version of python or in a different location 
+
+## Upgrade and Uninstall Packages
+pip install package_name --upgrade # upgrade the package
+pip uninstall package_name # uninstall a package
+
+## Other Package managers
+
+# easy_install
+# This will setuptools to archive the python code into .egg extension file (app.egg).
+# This is something similar to .jar file in Java
+# Then use easy_install to install the app, you dont need to unpack the .egg file
+easy_install install package_name
+
+# wheels
+#This will setuptools to archive the python code into .whl extension file (app.whl)
+# here you neeed to unpack the .whl package first and install the pacakge
+pip install app.whl
