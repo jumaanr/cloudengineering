@@ -37,7 +37,7 @@ git commit -am "My commit" # -a, --all option tells Git to automatically stage f
 
 Before committing, you need to introduce yourself to Git:
 
-[Learn Git Scopes](https://github.com/jumaanr/cloudengineering/blob/main/Git/Git_ExtraNotes.md#scopes-in-git)
+Reference: [Learn Git Scopes](https://github.com/jumaanr/cloudengineering/blob/main/Git/Git_ExtraNotes.md#scopes-in-git)
 
 ```bash
 git config user.name "sarah" # Add a user for commit, so all commits are recorded in the name of the author
@@ -67,8 +67,10 @@ Even if you commit or stage a file, a copy will be saved, so you can restore the
 ```bash
 git restore myFile.json # Discard the changes you have made in the working directory and restore it to the previous commit
 git restore --staged myFile.json # Remove a file from the staging area
+git rm --cached myFile.json # Removes the file myfile.sh from the staging area and stops tracking it in Git. The file remains in the working directory but is no longer tracked by Git.
 git rm notes.txt -f/--cached # Remove a tracked file from git tracking
 ```
+Reference : [Git Unstaging and Untracking](https://github.com/jumaanr/cloudengineering/blob/main/Git/Git_ExtraNotes.md#difference-between-git-rm---cached-myfilesh-and-git-restore---staged-myfilesh)
 
 To ignore a file permanently, add that file name to `.gitignore`:
 ```bash
