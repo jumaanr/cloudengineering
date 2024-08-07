@@ -1,9 +1,52 @@
-# cloudengineering
-Create, Manage, Automate Resources in Azure, AWS, GCP cloud platforms.
+# Cloud Engineering Project
+This project has been created to capture all the learnings of the Cloud Engineering path.
+It contains the necessary technologies I must know to become a Cloud Engineer. 
+You may fork it or clone it if you want.
 
-# GCP Platform
+Start Date: 07/08/24
 
-1. Create a VM in GCP Platform
-2. Remotely connect with the VM instance
-3. Install cloud CLI with dependancies
-4. We will be using it as a jumphost to install rest of the cloud cli commands
+- **Application Deployment**
+   - Java
+   - NodeJS
+   - Python
+   - C#/ ASP.NET
+
+- **Cloud Service Providers**
+   - Azure
+   - AWS
+   - GCP
+
+- **Infrastructure as Code**
+   - Terraform
+
+- **Web Servers**
+   - Nginx
+   - Apache HTTPD
+   - Apache Tomcat ( Java )
+   - NodeJS
+   - Python
+
+- **Database Servers**
+   - PostgreSQL
+   - MongoDB
+   - MySQL
+
+- **Caching Servers**
+   - Redis
+   - Memcached
+
+- **Security**
+   - SSL/TLS
+   - OAuth and OAuth2
+   - SAML
+   - OpenID Connect
+   - JWT ( Java Web Token)
+
+- **ELK Stack**
+   - Elastic Search
+   - Logstash
+   - Kibana
+
+- **Observability**
+   - Prometheus
+   - Grafana
