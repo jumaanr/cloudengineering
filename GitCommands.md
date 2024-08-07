@@ -36,11 +36,14 @@ git commit -am "My commit" # -a, --all option tells Git to automatically stage f
 ```
 
 Before committing, you need to introduce yourself to Git:
+
+[Learn Git Scopes](https://github.com/jumaanr/cloudengineering/blob/main/Git/Git_ExtraNotes.md#scopes-in-git)
+
 ```bash
 git config user.name "sarah" # Add a user for commit, so all commits are recorded in the name of the author
 git config user.email "sarah@example.com" # Add user's email address who performs the commit
 git config --global user.name "Jumaan Rimzy"
-git config --global user.email "jumaanr@outlook.com"
+git config --global user.email "jumaanr@outlook.com" #use Global Scope
 git config --list # Shows the current values
 git commit # Opens a text editor to provide a commit message
 git add . # Stage all the files in the working area
