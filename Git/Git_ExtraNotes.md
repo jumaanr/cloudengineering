@@ -149,6 +149,15 @@ In Git, merging is the process of combining changes from different branches into
      ```
      This moves the commits from `feature-branch` onto the latest commit of `main`.
 
+     ![image](https://github.com/user-attachments/assets/7fc2b251-b275-4573-a11e-8b050de38ab8)
+
+     ![image](https://github.com/user-attachments/assets/75e729f2-6921-4dfa-8d43-f1e0dcdab10d)
+
+     **Before Rebase**: The feature branch (F1, F2) diverged from the main branch after commit C2.
+     
+     **After Rebase**: The commits from the feature branch are moved on top of the main branch, making the history linear. The feature branch's commits become F1' and F2', following the latest commit C4 from the main branch.
+     These images illustrate how rebasing can streamline the commit history, making it linear and easier to follow.
+ 
    - **Use Case**: When you want to maintain a linear project history, avoiding merge commits.
 
 ### 5. **Octopus Merge**
