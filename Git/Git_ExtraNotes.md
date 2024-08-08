@@ -201,3 +201,28 @@ In Git, merging is the process of combining changes from different branches into
 These merge types and strategies provide flexibility in how you manage and integrate changes across branches in Git.
 
 ---
+
+## Ort Strategy in Git Branches
+
+The **Ort strategy** in Git refers to the new merge strategy introduced in Git 2.34 as a part of the internal changes to the way Git handles merges. The name "Ort" stands for "Optimized Recursive Transformation."
+
+### Key Features and Benefits of the Ort Strategy:
+1. **Performance Improvements**:
+   - The Ort strategy is designed to be faster and more efficient than the traditional recursive merge strategy. This is particularly noticeable in large repositories with many changes.
+
+2. **Improved Handling of Renames**:
+   - Ort provides better handling of renamed files during merges. It tracks and identifies renames more accurately, reducing conflicts and making merges smoother.
+
+3. **Reduced Conflicts**:
+   - By optimizing the way changes are detected and applied, the Ort strategy aims to reduce the number of conflicts that occur during merges. When conflicts do occur, they are often easier to resolve.
+
+4. **Modernization of Git’s Merge Engine**:
+   - Ort is part of an ongoing effort to modernize Git’s internal merge engine, making it more robust and capable of handling complex merging scenarios.
+
+### When to Use Ort Strategy:
+- The Ort strategy is used by default in many cases when performing merges in Git 2.34 and later. It doesn't require any special configuration to take advantage of its benefits, but understanding that Git now uses a more optimized and efficient merge process can help you better manage merges in your projects.
+
+### Summary:
+The Ort strategy is a modern, optimized approach to handling merges in Git, designed to improve performance, reduce conflicts, and handle complex scenarios more effectively. It reflects Git’s ongoing evolution to support large-scale, complex projects more efficiently.
+
+--- 
