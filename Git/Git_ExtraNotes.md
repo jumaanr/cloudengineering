@@ -102,3 +102,93 @@ Both `git rm --cached myfile.sh` and `git restore --staged myfile.sh` deal with 
   - Use `git restore --staged` when you want to unstage changes for a file but keep it under version control.
 
 ---
+
+## Types of Merges in Git
+
+In Git, merging is the process of combining changes from different branches into a single branch. There are several types of merges in Git, each suited for different situations.
+
+### 1. **Fast-Forward Merge**
+   - **Description**: A fast-forward merge occurs when the branch being merged in is a direct ancestor of the current branch. In this case, Git simply moves the current branch pointer forward to the new commit, without creating a new commit.
+   - **Example**:
+     ```bash
+     git checkout main
+     git merge feature-branch
+     ```
+     If `feature-branch` is directly ahead of `main`, Git will just "fast-forward" `main` to `feature-branch`.
+
+   - **Use Case**: When there are no divergent changes between the two branches, and you want a clean history.
+
+### 2. **Three-Way Merge**
+   - **Description**: A three-way merge is used when the branches have diverged, meaning both branches have commits that are not present in the other. Git creates a new "merge commit" that combines the changes from both branches.
+   - **Example**:
+     ```bash
+     git checkout main
+     git merge feature-branch
+     ```
+     If `main` and `feature-branch` have diverged, Git will perform a three-way merge and create a new commit on `main`.
+
+   - **Use Case**: When you want to preserve the history of both branches, and they have developed independently.
+
+### 3. **Squash Merge**
+   - **Description**: A squash merge condenses all the changes from the feature branch into a single commit on the target branch. The history of the feature branch is squashed into one commit, and this single commit is applied to the target branch.
+   - **Example**:
+     ```bash
+     git checkout main
+     git merge --squash feature-branch
+     git commit -m "Merged feature-branch with squash"
+     ```
+
+   - **Use Case**: When you want to combine all changes from a branch into a single commit, creating a cleaner, more concise history.
+
+### 4. **Rebase Merge**
+   - **Description**: Rebasing is not a traditional merge, but it’s a way to integrate changes from one branch into another by applying the commits from the current branch onto the tip of another branch. This creates a linear history.
+   - **Example**:
+     ```bash
+     git checkout feature-branch
+     git rebase main
+     ```
+     This moves the commits from `feature-branch` onto the latest commit of `main`.
+
+   - **Use Case**: When you want to maintain a linear project history, avoiding merge commits.
+
+### 5. **Octopus Merge**
+   - **Description**: An octopus merge is used when merging more than two branches into one. Git combines all the changes into a single commit. However, this is typically used for simpler scenarios where conflicts are less likely.
+   - **Example**:
+     ```bash
+     git checkout main
+     git merge branch1 branch2 branch3
+     ```
+
+   - **Use Case**: When you need to merge multiple branches at once, and the branches are relatively simple (without many conflicts).
+
+### 6. **Recursive Merge (Default)**
+   - **Description**: Recursive merge is the default strategy used by Git for merging two branches. It handles complex merge scenarios and tries to merge the changes automatically. If there are conflicts, it marks them and requires manual resolution.
+   - **Example**:
+     ```bash
+     git merge feature-branch
+     ```
+     If `feature-branch` and the current branch have conflicts, Git will attempt to resolve them using the recursive strategy.
+
+   - **Use Case**: Used by default for most merge operations where branches have diverged.
+
+### 7. **Ours Merge**
+   - **Description**: The "ours" merge strategy is used when you want to merge a branch, but completely discard the changes from the other branch, keeping only the changes from the current branch.
+   - **Example**:
+     ```bash
+     git merge -s ours branch-to-discard
+     ```
+
+   - **Use Case**: When you want to record that a branch has been merged, but you only want to keep your own changes, ignoring the other branch’s changes.
+
+### Summary
+- **Fast-Forward Merge**: No new commit; just moves the branch pointer forward.
+- **Three-Way Merge**: Creates a merge commit to combine diverged branches.
+- **Squash Merge**: Combines all changes into a single commit on the target branch.
+- **Rebase Merge**: Reapplies commits from one branch onto another, creating a linear history.
+- **Octopus Merge**: Merges multiple branches into one in a single commit.
+- **Recursive Merge (Default)**: Default strategy for complex merges; handles conflicts automatically.
+- **Ours Merge**: Keeps only the current branch's changes, discarding the other branch's changes.
+
+These merge types and strategies provide flexibility in how you manage and integrate changes across branches in Git.
+
+---
