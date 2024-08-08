@@ -226,3 +226,80 @@ The **Ort strategy** in Git refers to the new merge strategy introduced in Git 2
 The Ort strategy is a modern, optimized approach to handling merges in Git, designed to improve performance, reduce conflicts, and handle complex scenarios more effectively. It reflects Git’s ongoing evolution to support large-scale, complex projects more efficiently.
 
 --- 
+
+## Why We Need Tagging in Git
+
+**Tagging** in Git is used to mark specific points in a repository's history as important, often for releases or significant milestones. Tags are like bookmarks in your Git history, allowing you to easily reference a particular commit without worrying about its hash, which can be complex and hard to remember.
+
+### Use Cases for Git Tagging
+
+1. **Versioning**:
+   - Tags are commonly used to mark release versions (e.g., `v1.0.0`, `v2.1.0`). This makes it easy to identify which commit corresponds to a particular version of your software.
+
+2. **Deployment**:
+   - Tags are often used in deployment processes to indicate which commit should be deployed. For example, a `production` tag might point to the latest stable release that's safe to deploy.
+
+3. **Milestones**:
+   - Tags can mark significant points in the project, such as completing a major feature, or achieving a project milestone.
+
+4. **References**:
+   - Tags make it easier to reference a specific state of the repository when discussing or reviewing changes, without the need to remember commit hashes.
+
+### How to Perform Git Tagging
+
+1. **Creating a Lightweight Tag**:
+   - A lightweight tag is like a simple bookmark that points to a specific commit.
+   ```bash
+   git tag <tag_name>
+   ```
+   Example:
+   ```bash
+   git tag v1.0.0
+   ```
+
+2. **Creating an Annotated Tag**:
+   - Annotated tags store additional metadata like the tagger’s name, email, date, and a message.
+   ```bash
+   git tag -a <tag_name> -m "Tag message"
+   ```
+   Example:
+   ```bash
+   git tag -a v1.0.0 -m "Release version 1.0.0"
+   ```
+
+3. **Pushing Tags to a Remote Repository**:
+   - After creating a tag, you need to push it to the remote repository.
+   ```bash
+   git push origin <tag_name>
+   ```
+   Example:
+   ```bash
+   git push origin v1.0.0
+   ```
+
+   - To push all tags at once:
+   ```bash
+   git push --tags
+   ```
+
+4. **Listing Tags**:
+   - You can list all tags in the repository with:
+   ```bash
+   git tag
+   ```
+
+5. **Checking Out a Tag**:
+   - You can check out a specific tag to view the repository at that point in history.
+   ```bash
+   git checkout <tag_name>
+   ```
+   Example:
+   ```bash
+   git checkout v1.0.0
+   ```
+
+### Summary
+
+Tagging in Git is crucial for version control, deployment, and marking important milestones in your project's history. It provides a simple way to reference specific commits, making it easier to manage and track the progress of your codebase.
+
+---
