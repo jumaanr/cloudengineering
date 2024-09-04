@@ -11,7 +11,7 @@ provider "azurerm" {
   subscription_id = "6912d7a0-bc28-459a-9407-33bbba641c07"
   tenant_id = "70c0f6d9-7f3b-4425-a6b6-09b47643ec58"
   client_id = "3feda701-6a3d-4915-8d26-343827060a8e"
-  client_secret = ""
+  client_secret = "kKH8Q~54-LwKs2lYfNj6ECD_VmAt-cKSllRG4bfE"
   features {    
   }
 }
@@ -49,7 +49,7 @@ resource "azurerm_mssql_server" "sqlsvr4wsqlwebapp01" {
   location                     = "eastus2"
   version                      = "12.0"
   administrator_login          = "sqlusr"
-  administrator_login_password = ""  
+  administrator_login_password = "Pa$$w0RdVa1iDaT3d"  
 }
 
 resource "azurerm_mssql_database" "appdb" {
