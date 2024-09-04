@@ -51,3 +51,5 @@ terraform init #This would download modules required (Need more conttext here Ch
 terraform plan -out main.tfplan # we are creating terraform plan file here ( Need more conttext here ChatGPT, on what happenes in the brackground) . This would compare existing resources in Azure account and measure whats going to be deployed.
 terraform apply "main.tfplan" # (Need more conttext here ChatGPT, on what happenes in the brackground). This would apply the plan accordingly
 terraform destroy # this would destroy whatver the resoruces created by terraform
+
+# complete the writing 
