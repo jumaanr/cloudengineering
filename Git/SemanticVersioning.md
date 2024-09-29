@@ -39,3 +39,61 @@ Semantic versioning also makes it easier to define version ranges when depending
 
 ### Conclusion:
 Semantic versioning is a widely adopted convention in software development that simplifies the process of versioning software in a consistent and transparent way, reducing confusion for developers and users when upgrading software.
+
+# Label Versioning
+In **Semantic Versioning (SemVer)**, a **label element** is used to indicate **pre-release versions** or **build metadata**. These elements provide additional context about the version beyond the standard **MAJOR.MINOR.PATCH** structure.
+
+### Types of Label Elements in Semantic Versioning:
+
+1. **Pre-release Label**:
+   - Used to mark versions that are **not ready for production** (e.g., alpha, beta, or release candidates).
+   - Follows the `PATCH` version and is separated by a hyphen (`-`).
+   - Pre-release versions have **lower precedence** than the associated MAJOR.MINOR.PATCH version. This allows for testing or development without affecting the stability of the main release.
+
+   **Format**:
+   ```
+   MAJOR.MINOR.PATCH-<pre-release-label>
+   ```
+   
+   **Examples**:
+   - `1.0.0-alpha`
+   - `1.0.0-beta.1`
+   - `2.1.0-rc.2`
+   
+   **Common Pre-release Identifiers**:
+   - `alpha`: Early stage testing or development.
+   - `beta`: More stable than alpha, but still in testing.
+   - `rc` (Release Candidate): Nearly ready for release, but final testing is still required.
+
+2. **Build Metadata**:
+   - Used to indicate **build information** that doesn’t affect version precedence.
+   - Follows the version or pre-release label and is separated by a plus sign (`+`).
+   - Build metadata is **ignored when determining version precedence** but is useful for identifying specific builds (e.g., build numbers, commit hashes).
+
+   **Format**:
+   ```
+   MAJOR.MINOR.PATCH+<build-metadata>
+   ```
+   
+   **Examples**:
+   - `1.0.0+build.123`
+   - `1.0.0-alpha+exp.sha.5114f85`
+   - `2.1.0+20230915`
+
+### Full Semantic Version Example with Labels:
+- `1.0.0-alpha.1+build.001`
+
+In this example:
+- `1.0.0`: The standard version number (MAJOR.MINOR.PATCH).
+- `alpha.1`: Indicates it's an early test release (alpha, first iteration).
+- `build.001`: Provides additional information about the build.
+
+### Key Points:
+- **Pre-release labels** determine **precedence**; for example, `1.0.0-alpha` < `1.0.0-beta` < `1.0.0`.
+- **Build metadata** is for **informational purposes only** and doesn’t affect precedence. For example, `1.0.0+build.1` is considered the same version as `1.0.0`.
+
+### Usage Scenarios:
+- **Pre-release versions** are typically used when you're developing software but want to make it available for testing or feedback before the official release.
+- **Build metadata** helps to track specific builds or deployments without altering the core version number.
+
+In summary, **labels** in Semantic Versioning help differentiate versions in development stages and provide additional metadata, ensuring clarity during software development and deployment.
