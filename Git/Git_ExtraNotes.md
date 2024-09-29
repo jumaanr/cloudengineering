@@ -490,3 +490,48 @@ There are several alternatives to **BFG Repo-Cleaner** for cleaning up Git repos
 - **Git `rebase`**: Rewrites recent commits interactively.
 - **Git `reset`**: Removes recent commits or changes.
 - **GitHub/GitLab/Bitbucket Tools**: Built-in features for managing repository size and scanning for sensitive data.
+
+---
+
+# Git Revert Command
+
+`git revert` is a Git command used to undo changes introduced by a previous commit, **without deleting the commit history**. Unlike `git reset`, which removes commits from the history, `git revert` creates a new commit that **reverses the changes made by a specific commit**.
+
+### How `git revert` Works:
+- It applies the inverse (reversal) of the changes from the commit you want to undo, and then creates a new commit with those reversed changes.
+- The original commit remains in the history, but the effects of that commit are negated by the new revert commit.
+- It's often used in shared repositories because it preserves history and does not rewrite the commit log.
+
+### Syntax:
+```bash
+git revert <commit>
+```
+Where `<commit>` is the hash of the commit you want to revert.
+
+### Example:
+1. **Identify the commit** you want to revert:
+   ```bash
+   git log
+   ```
+
+2. **Revert the commit**:
+   ```bash
+   git revert <commit-hash>
+   ```
+   This will open your editor, allowing you to modify the commit message for the revert commit. After saving and closing, Git will create a new commit that undoes the changes made by `<commit-hash>`.
+
+### Key Points:
+- **Safe for collaborative work**: `git revert` is preferable in a shared environment because it doesn’t rewrite history, preventing conflicts for other collaborators.
+- **Creates a new commit**: It does not remove the commit you are reverting; instead, it applies a new commit with the reverse of the changes.
+- **Multiple commits**: You can revert multiple commits by specifying them one by one, or using a range:
+   ```bash
+   git revert <start-commit>..<end-commit>
+   ```
+
+### When to Use:
+- When you need to undo a specific commit without disrupting the commit history.
+- When you want to fix an unintended change but keep a clear record of all changes.
+
+### Contrast with `git reset`:
+- `git reset` rewrites history by removing commits, making it more suitable for local work.
+- `git revert` maintains the commit history and is safer for public or shared repositories.
