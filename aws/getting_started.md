@@ -47,7 +47,3 @@ ssh -i .\privatekey.pem ec2-user@ip_address  # Accept the prompt by typing 'yes'
 - Right-click the `.pem` file → Properties → Security → Advanced.
 - Change the Owner to yourself and give full control.
 - Remove all inherited permissions, including SYSTEM.
-```
-
---- 
-This Markdown provides a clear structure for the steps to install and use the AWS CLI via PowerShell.
