@@ -47,3 +47,30 @@ ssh -i .\privatekey.pem ec2-user@ip_address  # Accept the prompt by typing 'yes'
 - Right-click the `.pem` file → Properties → Security → Advanced.
 - Change the Owner to yourself and give full control.
 - Remove all inherited permissions, including SYSTEM.
+
+---
+
+## SSH Troubleshooting Guide
+
+### 1. There is a connection timeout
+This is a security group issue. Look at the services that has been allowed.
+
+### 2. There is still a connection timeout issue.
+The intermediate, corporate or personal firewall is blocking
+
+### 3. SSH Does not work on Windows
+- if it says : ssh command not found , you have to use 3rd party tool like putty
+
+### 4. Connection refused
+Try to restart the service, or instance. 
+
+### 5. Permission denied
+This means either two things:
+- You are using the wrong key or not using a security key. Look at the instance configuration and make sure you have assigned the correct key
+- You are using wrong user. Makesure you are using ec2-user. Check the ssh command
+
+### 6. Nothing working
+Spin-up a new instance
+
+### 7. Could connect yesterday , but not today
+Public IP address is changed
